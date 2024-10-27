@@ -14,12 +14,12 @@ Content-Type: application/json
 {
       "Name": "Mohammed",
     "Description": "An",
-    "Category": "any thing",
+    "Category": "Egyptian",
 
         "City": "Cairo",
         "Street": "any thing",
         "PostalCode": "anything",
     "ContactEmail": "example@example.com",
-    "ContactNumber": "0101010"
+    "ContactNumber": "+201064022054"
 }
 ###
