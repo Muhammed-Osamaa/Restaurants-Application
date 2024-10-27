@@ -4,15 +4,22 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-@id=6
-GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
+GET https://localhost:7028/api/Restaurants/2002
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
 
-###
+{
+      "Name": "Mohammed",
+    "Description": "An",
+    "Category": "any thing",
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants
-
+        "City": "Cairo",
+        "Street": "any thing",
+        "PostalCode": "anything",
+    "ContactEmail": "example@example.com",
+    "ContactNumber": "0101010"
+}
 ###
