@@ -4,7 +4,11 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-@id=6
+@id=2003
 GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
 
 ###
