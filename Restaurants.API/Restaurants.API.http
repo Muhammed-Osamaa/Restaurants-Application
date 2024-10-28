@@ -4,22 +4,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET https://localhost:7028/api/Restaurants/2002
+@id=6
+GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
 
-###
-
-POST {{Restaurants.API_HostAddress}}/api/restaurants
-Content-Type: application/json
-
-{
-      "Name": "Mohammed",
-    "Description": "An",
-    "Category": "Egyptian",
-
-        "City": "Cairo",
-        "Street": "any thing",
-        "PostalCode": "anything",
-    "ContactEmail": "example@example.com",
-    "ContactNumber": "+201064022054"
-}
 ###

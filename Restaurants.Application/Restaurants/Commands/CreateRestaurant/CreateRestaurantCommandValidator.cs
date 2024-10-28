@@ -1,13 +1,13 @@
 ﻿
 using FluentValidation;
-using Restaurants.Application.Restaurants.DTOs;
 
-namespace Restaurants.Application.Restaurants.Validators;
 
-public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDto>
+namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant;
+
+public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
 {
     private readonly List<string> _validCategory = ["Egyptian", "Italian", "American"];
-    public CreateRestaurantDtoValidator()
+    public CreateRestaurantCommandValidator()
     {
         //RuleFor(dto => dto.Name).NotEmpty().Length(4,20);
 
@@ -20,6 +20,6 @@ public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDt
         RuleFor(dto => dto.ContactNumber).Matches(@"^\+20(10|11|12|15)\d{8}$");
 
         RuleFor(dto => dto.Category).Must(_validCategory.Contains);
-    
+
     }
 }
