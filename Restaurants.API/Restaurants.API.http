@@ -4,11 +4,22 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-@id=2003
+@id=1003
 GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
 
 ###
 
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
+
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/1003
+Content-Type: application/json
+
+{
+  "name" : "Mohamed",
+  "description" : "Any Things",
+   "hasDelivary" : true
+}
 
 ###

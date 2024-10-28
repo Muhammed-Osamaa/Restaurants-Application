@@ -37,5 +37,9 @@ namespace Restaurants.Infrastructure.Repositories
             return entity.Id;
         }
 
+        public async Task SaveChanges()
+        {
+           await dbContext.SaveChangesAsync();
+        }
     }
 }

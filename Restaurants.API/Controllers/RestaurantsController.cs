@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
+using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
+using System.Net.WebSockets;
 
 namespace Restaurants.API.Controllers
 {
@@ -41,6 +43,15 @@ namespace Restaurants.API.Controllers
         {
             var id = await mediator.Send(createRestaurantCommand);
             return CreatedAtAction(nameof(GetRestaurantsById), new {id} , null);
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateRestaurant([FromRoute] int id, [FromBody]UpdateRestaurantCommand updateRestaurantCommand)
+        {
+            updateRestaurantCommand.Id = id;
+            var isUpdated = await mediator.Send(updateRestaurantCommand);
+            if (isUpdated) return NoContent();
+            return NotFound("The Id is invalid");
         }
 
     }
