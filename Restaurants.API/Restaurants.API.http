@@ -4,21 +4,13 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants
+GET {{Restaurants.API_HostAddress}}/api/restaurants/6 
 
 ###
 
-@id=6
-GET {{Restaurants.API_HostAddress}}/api/restaurants/{{id}}
+@restaurantId=6
+GET {{Restaurants.API_HostAddress}}/api/restaurant/6/dishes
 
 ###
 
-PATCH {{Restaurants.API_HostAddress}}/api/restaurants/1003
-Content-Type: application/json
-
-{
-  "name" : "mmmo",
-  "description": "Any Things"
-}
-
-###
+GET {{Restaurants.API_HostAddress}}/api/restaurant/7/dishes/4

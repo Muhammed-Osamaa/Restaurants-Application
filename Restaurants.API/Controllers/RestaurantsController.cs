@@ -16,29 +16,34 @@ namespace Restaurants.API.Controllers
     public class RestaurantsController(IMediator mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<IActionResult> GetAllRestaurants()
+       // [ProducesResponseType(StatusCodes.Status200OK , Type = typeof(IEnumerable<RestaurantDto>))]
+        public async Task<ActionResult<IEnumerable<RestaurantDto>>> GetAllRestaurants()
         {
             var restaurants = await mediator.Send(new GetAllRestaurantsQuery());
             return Ok(restaurants);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRestaurantsById([FromRoute]int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<RestaurantDto>> GetRestaurantsById([FromRoute]int id)
         {
             var restaurant = await mediator.Send(new GetRestaurantByIdQuery() { Id = id});
-            if (restaurant == null) return NotFound("Can't Find this Id");
             return Ok(restaurant);
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<IActionResult> DeleteRestaurant([FromRoute]int id)
         {
-            var isDeleted = await mediator.Send(new DeleteRestaurantCommand() { Id = id});
-            if (isDeleted) return NoContent();
-            return NotFound("The id is invalid");
+            await mediator.Send(new DeleteRestaurantCommand() { Id = id});
+            return NoContent();
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateRestaurant(CreateRestaurantCommand createRestaurantCommand)
         {
             var id = await mediator.Send(createRestaurantCommand);
@@ -46,12 +51,13 @@ namespace Restaurants.API.Controllers
         }
 
         [HttpPatch("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateRestaurant([FromRoute] int id, [FromBody]UpdateRestaurantCommand updateRestaurantCommand)
         {
             updateRestaurantCommand.Id = id;
-            var isUpdated = await mediator.Send(updateRestaurantCommand);
-            if (isUpdated) return NoContent();
-            return NotFound("The Id is invalid");
+            await mediator.Send(updateRestaurantCommand);
+            return NoContent();
         }
 
     }

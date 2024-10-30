@@ -12,14 +12,14 @@ internal class RestaurantSeeder(RestaurantsDbContext dbContext) : IRestaurantSee
         {
             if (!await dbContext.Restaurants.AnyAsync())
             {
-                var restuarants = GetResturants();
-                dbContext.Restaurants.AddRange(restuarants);
+                var restaurants = GetRestaurants();
+                dbContext.Restaurants.AddRange(restaurants);
                 dbContext.SaveChanges();
             }
         }
     }
 
-    private IEnumerable<Restaurants.Domain.Entities.Restaurant> GetResturants() => [
+    private IEnumerable<Restaurants.Domain.Entities.Restaurant> GetRestaurants() => [
           new()
             {
                 Name = "KFC",
