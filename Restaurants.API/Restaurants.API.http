@@ -4,7 +4,7 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/6 
+GET {{Restaurants.API_HostAddress}}/api/restaurants/6
 
 ###
 
@@ -13,4 +13,16 @@ GET {{Restaurants.API_HostAddress}}/api/restaurant/6/dishes
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurant/7/dishes/4
+POST {{Restaurants.API_HostAddress}}/api/restaurant/6/dishes
+Content-Type: application/json
+
+
+{
+  "name": "asdasd",
+  "description": "dasd",
+  "price": 11,
+  "kiloCalories": 11
+}
+
+
+###
