@@ -1,7 +1,7 @@
 ﻿
 using System.Diagnostics;
 
-namespace Restaurants.API.RequestTimeLoggingMiddleware;
+namespace Restaurants.API.Middlewares;
 
 public class RequestTimeLoggingMiddleware(ILogger<RequestTimeLoggingMiddleware> logger) : IMiddleware
 {
