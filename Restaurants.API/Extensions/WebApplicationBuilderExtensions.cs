@@ -45,5 +45,7 @@ public static class WebApplicationBuilderExtensions
             //.WriteTo.File("Logs/Restaurant-API-.log" , rollingInterval:RollingInterval.Day , rollOnFileSizeLimit:true);
             cfg.ReadFrom.Configuration(context.Configuration);
         });
+
+        builder.Services.AddAuthentication();
     }
 }

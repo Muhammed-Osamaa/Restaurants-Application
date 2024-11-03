@@ -1,5 +1,5 @@
 @Restaurants.API_HostAddress = https://localhost:7028
-
+@token = CfDJ8CqZIRbKH4dGkRRQOysJsspdaY50mUG6H04WI5QBpcVXE1Y5hnuX-aEDTq8lVejeJ0OSy4x7I_SQKwpDmuMljO-7RW7xroM0Xdwc2jvM0BRMKOBkRocRZnk4-ymNlL6oWx5jaVk-AVs0UQknbGd3VRRZI0sV3t90fiHpHwaLbj-EEy-ShAIjnqCGLyIqswrq2MqLjjNbAkTR2pLKtyQKJsMeFDzqMNUB2yERvyI_I-kYD6B-655tPGsHHkZwXM3tDeUz229VRfREMc6gh7RVDpmYwq9AyNXSt2KqVN5rWfMusWr-N8FxIS4LWsB53GE6YmBdqlZ36c28imDcZJLQ3OsPqAk6GwT0e_B_Eh56wHNRX9r_hc7lTL8AuvOekGgJPL3uUCMKDixb-TVk7tvk-CW_hmtF64f1Dqha9BLFSoOHzQJEbG4yxVnBwzsWW9qb18WedxmF8SMJSS456XcFkBCqq8zdTsX-uaevIr5og3YmJLc5hMZf20piZsPWxJt8sFYNlnvDsVxCoOGYspKE_6FfAZvHlpEdcAUTgxxsZLraNe4XGa0nD8hhmRYCbwDwuNEQ3mplosn5EW64ic9Agu7CnO3pLCqTwtFrecQG0rulQQ5skn-ZKTza42OpF6AzRfKhGV1aXzNETZXKPIsziRnHbSwsdIKjsS26WVv2H0QzWtIYElgTc0oCn3iPGDJ7zg
 Post {{Restaurants.API_HostAddress}}/register
 Content-Type: application/json
 {
@@ -7,7 +7,7 @@ Content-Type: application/json
   "password":"Password1!"
 }
 ###
-POST {{Restaurants.API_HostAddress}}/login
+POST {{Restaurants.API_HostAddress}}/api/identity/login
 Content-Type: application/json
 
 
@@ -15,3 +15,7 @@ Content-Type: application/json
   "email":"aa@yahoo.com",
   "password":"Password1!"
 }
+
+###
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+//Authorization: Bearer {{token}}
