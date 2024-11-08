@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,8 @@ public static class ServiceCollectionExtensions
             .AddClaimsPrincipalFactory<RestaurantsUserClaimsPrincipalFactory>()
             .AddEntityFrameworkStores<RestaurantsDbContext>();
         services.AddAuthorizationBuilder()
-            .AddPolicy(PolicyNames.HasNationality, policy => policy.RequireClaim(AppClaimTypes.Nationality,"Egyptian"));
+            .AddPolicy(PolicyNames.HasNationality, policy => policy.RequireClaim(AppClaimTypes.Nationality,"Egyptian"))
+            .AddPolicy(PolicyNames.AtLeast20 , policy => policy.AddRequirements(new MinimumAgeRequirement() { MinimumAge =20}));
+        services.AddScoped<IAuthorizationHandler, MinimumAgeRequirementHandler>();
     }
 }
